@@ -11,6 +11,13 @@ class CalculatorPage extends StatefulWidget {
 class _CalculatorPageState extends State<CalculatorPage> {
   int count = 0;
 
+  void increment() {
+    setState(() {
+      count++;
+    });
+    debugPrint("Button pressed: $count");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +33,11 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 50,),
+            const SizedBox(
+              height: 50,
+            ),
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  count++;
-                });
-                debugPrint("Button pressed: $count");
-              },
+              onTap: increment,
               child: Container(
                 alignment: Alignment.center,
                 height: 50,
