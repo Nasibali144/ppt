@@ -41,4 +41,9 @@ class DioService extends Network{
 sealed class Api {
   static const baseUrl = "https://api.nstack.in";
   static const todos = "/v1/todos";
+
+  static Map<String, String> query({int page = 1, int limit = 10}) => {
+    "page": page.toString(),
+    "limit": limit.toString() ,
+  };
 }
