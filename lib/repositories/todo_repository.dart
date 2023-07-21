@@ -29,28 +29,26 @@ class TodoRepositoryImpl implements TodoRepository {
   }
 
   @override
-  Future<Todo> completeTodo(String id, bool isComplete) {
-    // TODO: implement completeTodo
-    throw UnimplementedError();
+  Future<Todo> completeTodo(String id, bool isComplete) async {
+    final json = await client.patch(api: Api.todos, data: {"isComplete": isComplete}, id: id) as Map<String, dynamic>;
+    return Todo.fromJson(json);
   }
 
   @override
-  Future<Todo> createTodo(Todo todo) {
-    // TODO: implement createTodo
-    throw UnimplementedError();
+  Future<Todo> createTodo(Todo todo) async {
+    final json = await client.post(api: Api.todos, data: todo.toJson()) as Map<String, dynamic>;
+    return Todo.fromJson(json);
   }
 
   @override
-  Future<bool> deleteTodo(String id) {
-    // TODO: implement deleteTodo
-    throw UnimplementedError();
+  Future<bool> deleteTodo(String id) async {
+    final json = await client.get(api: Api.todos, id: id);
+    return json != null;
   }
 
   @override
-  Future<Todo> updateTodo(String id, Todo todo) {
-    // TODO: implement updateTodo
-    throw UnimplementedError();
+  Future<Todo> updateTodo(String id, Todo todo) async {
+    final json = await client.put(api: Api.todos, data: todo.toJson(), id: id) as Map<String, dynamic>;
+    return Todo.fromJson(json);
   }
-
-
 }

@@ -31,4 +31,15 @@ class TodoController with ChangeNotifier {
 
     return todo;
   }
+
+  Future<void> createTodo(String id, String title, String description) async {
+    isLoading = true;
+    notifyListeners();
+
+    Todo todo = await repository.createTodo(Todo(createdAt: DateTime.now().toString(), updatedAt: DateTime.now().toString(), isComplete: false, title: title, description: description, id: "00"));
+    todos.add(todo);
+
+    isLoading = false;
+    notifyListeners();
+  }
 }
