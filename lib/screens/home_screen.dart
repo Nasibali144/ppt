@@ -60,7 +60,7 @@ class ItemCard extends StatelessWidget {
     return Card(
       child: ListTile(
         onTap: () {
-          AppRoutes.goDetailFromHome(context: context, key: key);
+          AppRoutes.goDetailFromHome(context: context, key: key, id: todo.id);
         },
         title: Text(todo.title),
         subtitle: Text(todo.description),

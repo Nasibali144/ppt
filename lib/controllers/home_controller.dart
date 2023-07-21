@@ -22,11 +22,6 @@ class HomeController extends BaseController {
   }
 
   @override
-  void close() {
-    // TODO: implement close
-  }
-
-  @override
   void init() {
     super.init();
     fetchTodos();
