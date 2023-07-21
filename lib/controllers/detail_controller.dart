@@ -8,7 +8,7 @@ class DetailController extends BaseController {
   final TodoRepository repository;
 
   /// related home screen
-  late Todo todo;
+  Todo? todo;
   bool isLoading = false;
 
   void fetchTodos(String id) async {
