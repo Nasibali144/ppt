@@ -4,6 +4,10 @@ import 'package:ppt/services/network_service.dart';
 abstract class TodoRepository {
   Future<List<Todo>> getTodos();
   Future<Todo> getTodo(String id);
+  Future<bool> deleteTodo(String id);
+  Future<Todo> updateTodo(String id, Todo todo);
+  Future<Todo> createTodo(Todo todo);
+  Future<Todo> completeTodo(String id, bool isComplete);
 }
 
 class TodoRepositoryImpl implements TodoRepository {
@@ -23,4 +27,30 @@ class TodoRepositoryImpl implements TodoRepository {
     final json = await client.get(api: Api.todos, id: id) as Map<String, dynamic>;
     return Todo.fromJson(json);
   }
+
+  @override
+  Future<Todo> completeTodo(String id, bool isComplete) {
+    // TODO: implement completeTodo
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Todo> createTodo(Todo todo) {
+    // TODO: implement createTodo
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> deleteTodo(String id) {
+    // TODO: implement deleteTodo
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Todo> updateTodo(String id, Todo todo) {
+    // TODO: implement updateTodo
+    throw UnimplementedError();
+  }
+
+
 }

@@ -5,9 +5,10 @@ abstract class Network {
   const Network();
 
   Future<Object?> get({required String api, Map<String, String>? query, String? id});
-  // Future<String?> post();
-  // Future<String?> put();
-  // Future<String?> delete();
+  Future<Object?> post({required String api, required Map<String, Object?> data, String? id});
+  Future<Object?> put({required String api, required Map<String, Object?> data, String? id});
+  Future<Object?> patch({required String api, required Map<String, Object?> data, String? id});
+  Future<Object?> delete({required String api, String? id});
 }
 
 class DioService extends Network{
@@ -38,6 +39,32 @@ class DioService extends Network{
     }
     return null;
   }
+
+  @override
+  Future<Object?> delete({required String api, String? id}) {
+    // TODO: implement delete
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Object?> patch({required String api, required Map<String, Object?> data, String? id}) {
+    // TODO: implement patch
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Object?> post({required String api, required Map<String, Object?> data, String? id}) {
+    // TODO: implement post
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Object?> put({required String api, required Map<String, Object?> data, String? id}) {
+    // TODO: implement put
+    throw UnimplementedError();
+  }
+
+
 }
 
 sealed class Api {
