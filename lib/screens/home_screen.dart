@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ppt/controllers/todo_controller.dart';
+import 'package:ppt/core/app_root.dart';
 import 'package:ppt/views/item_card.dart';
 import 'package:provider/provider.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,6 +33,12 @@ class HomeScreen extends StatelessWidget {
             ],
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          AppRoutes.goDetailFromHome(context: context, key: key);
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

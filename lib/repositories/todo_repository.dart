@@ -42,7 +42,7 @@ class TodoRepositoryImpl implements TodoRepository {
 
   @override
   Future<bool> deleteTodo(String id) async {
-    final json = await client.get(api: Api.todos, id: id);
+    final json = await client.delete(api: Api.todos, id: id);
     return json != null;
   }
 
