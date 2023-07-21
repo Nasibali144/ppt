@@ -3,9 +3,7 @@ import 'package:ppt/models/todo/todo.dart';
 import 'package:ppt/repositories/todo_repository.dart';
 
 class HomeController with ChangeNotifier {
-  HomeController({required this.repository}) {
-    fetchTodos();
-  }
+  HomeController({required this.repository});
 
   final TodoRepository repository;
 
@@ -17,10 +15,13 @@ class HomeController with ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final responseTodos = await repository.getTodos(1);
-    items = responseTodos.items;
+    items = await repository.getTodos();
 
     isLoading = false;
     notifyListeners();
+  }
+
+  void close() {
+    /// dispose all here
   }
 }

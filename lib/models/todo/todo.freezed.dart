@@ -20,13 +20,12 @@ Todo _$TodoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Todo {
-  @JsonKey(name: "_id")
-  String get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  bool get isCompleted => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
+  bool get isComplete => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,12 +38,12 @@ abstract class $TodoCopyWith<$Res> {
       _$TodoCopyWithImpl<$Res, Todo>;
   @useResult
   $Res call(
-      {@JsonKey(name: "_id") String id,
+      {String createdAt,
+      String updatedAt,
+      bool isComplete,
       String title,
       String description,
-      bool isCompleted,
-      String createdAt,
-      String updatedAt});
+      String id});
 }
 
 /// @nodoc
@@ -60,18 +59,26 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? description = null,
-    Object? isCompleted = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? isComplete = null,
+    Object? title = null,
+    Object? description = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      isComplete: null == isComplete
+          ? _value.isComplete
+          : isComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -80,17 +87,9 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      isCompleted: null == isCompleted
-          ? _value.isCompleted
-          : isCompleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -103,12 +102,12 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "_id") String id,
+      {String createdAt,
+      String updatedAt,
+      bool isComplete,
       String title,
       String description,
-      bool isCompleted,
-      String createdAt,
-      String updatedAt});
+      String id});
 }
 
 /// @nodoc
@@ -120,30 +119,14 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? description = null,
-    Object? isCompleted = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? isComplete = null,
+    Object? title = null,
+    Object? description = null,
+    Object? id = null,
   }) {
     return _then(_$_Todo(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      isCompleted: null == isCompleted
-          ? _value.isCompleted
-          : isCompleted // ignore: cast_nullable_to_non_nullable
-              as bool,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -152,41 +135,55 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      isComplete: null == isComplete
+          ? _value.isComplete
+          : isComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$_Todo implements _Todo {
   const _$_Todo(
-      {@JsonKey(name: "_id") required this.id,
+      {required this.createdAt,
+      required this.updatedAt,
+      required this.isComplete,
       required this.title,
       required this.description,
-      required this.isCompleted,
-      required this.createdAt,
-      required this.updatedAt});
+      required this.id});
 
   factory _$_Todo.fromJson(Map<String, dynamic> json) => _$$_TodoFromJson(json);
 
   @override
-  @JsonKey(name: "_id")
-  final String id;
+  final String createdAt;
+  @override
+  final String updatedAt;
+  @override
+  final bool isComplete;
   @override
   final String title;
   @override
   final String description;
   @override
-  final bool isCompleted;
-  @override
-  final String createdAt;
-  @override
-  final String updatedAt;
+  final String id;
 
   @override
   String toString() {
-    return 'Todo(id: $id, title: $title, description: $description, isCompleted: $isCompleted, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Todo(createdAt: $createdAt, updatedAt: $updatedAt, isComplete: $isComplete, title: $title, description: $description, id: $id)';
   }
 
   @override
@@ -194,22 +191,22 @@ class _$_Todo implements _Todo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Todo &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.isCompleted, isCompleted) ||
-                other.isCompleted == isCompleted) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.isComplete, isComplete) ||
+                other.isComplete == isComplete) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, title, description, isCompleted, createdAt, updatedAt);
+      runtimeType, createdAt, updatedAt, isComplete, title, description, id);
 
   @JsonKey(ignore: true)
   @override
@@ -227,28 +224,27 @@ class _$_Todo implements _Todo {
 
 abstract class _Todo implements Todo {
   const factory _Todo(
-      {@JsonKey(name: "_id") required final String id,
+      {required final String createdAt,
+      required final String updatedAt,
+      required final bool isComplete,
       required final String title,
       required final String description,
-      required final bool isCompleted,
-      required final String createdAt,
-      required final String updatedAt}) = _$_Todo;
+      required final String id}) = _$_Todo;
 
   factory _Todo.fromJson(Map<String, dynamic> json) = _$_Todo.fromJson;
 
   @override
-  @JsonKey(name: "_id")
-  String get id;
+  String get createdAt;
+  @override
+  String get updatedAt;
+  @override
+  bool get isComplete;
   @override
   String get title;
   @override
   String get description;
   @override
-  bool get isCompleted;
-  @override
-  String get createdAt;
-  @override
-  String get updatedAt;
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$_TodoCopyWith<_$_Todo> get copyWith => throw _privateConstructorUsedError;

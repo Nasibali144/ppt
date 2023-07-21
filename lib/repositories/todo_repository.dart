@@ -1,8 +1,9 @@
-import 'package:ppt/models/api_response/api_response.dart';
+import 'package:ppt/models/todo/todo.dart';
 import 'package:ppt/services/network_service.dart';
 
 abstract class TodoRepository {
-  Future<ResponseTodos> getTodos(int page);
+  Future<List<Todo>> getTodos();
+  Future<Todo> getTodo(String id);
 }
 
 class TodoRepositoryImpl implements TodoRepository {
@@ -11,8 +12,15 @@ class TodoRepositoryImpl implements TodoRepository {
   const TodoRepositoryImpl({required this.client});
 
   @override
-  Future<ResponseTodos> getTodos(int page) async {
-    final json = await client.get(api: Api.todos, query: Api.query(page: page));
-    return ResponseTodos.fromJson(json!);
+  Future<List<Todo>> getTodos() async {
+    final json = await client.get(api: Api.todos) as List;
+    json.map((item) => Todo.fromJson(item as Map<String, dynamic>)).toList();
+    return json.map((item) => Todo.fromJson(item as Map<String, dynamic>)).toList();
+  }
+
+  @override
+  Future<Todo> getTodo(String id) async {
+    final json = await client.get(api: Api.todos, id: id) as Map<String, dynamic>;
+    return Todo.fromJson(json);
   }
 }
