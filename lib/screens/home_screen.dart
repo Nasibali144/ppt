@@ -11,9 +11,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeController>(
-      create: (context)  => locator<HomeController>()..fetchTodos(),
+      /// init state
+      create: (context) => locator<HomeController>()..init(),
       builder: (context, child) {
         return WillPopScope(
+          /// dispose
           onWillPop: () async {
             context.read<HomeController>().close();
             return true;

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:ppt/controllers/base_controller.dart';
 import 'package:ppt/models/todo/todo.dart';
 import 'package:ppt/repositories/todo_repository.dart';
 
-class HomeController with ChangeNotifier {
+class HomeController extends BaseController {
   HomeController({required this.repository});
 
   final TodoRepository repository;
@@ -21,7 +21,14 @@ class HomeController with ChangeNotifier {
     notifyListeners();
   }
 
+  @override
   void close() {
-    /// dispose all here
+    // TODO: implement close
+  }
+
+  @override
+  void init() {
+    super.init();
+    fetchTodos();
   }
 }
