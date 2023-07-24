@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ppt/controllers/connectivity_controller.dart';
 import 'package:ppt/controllers/todo_controller.dart';
 import 'package:ppt/core/app_root.dart';
 import 'package:ppt/views/item_card.dart';
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ConnectivityController>(context, listen: false).connectionContext = context;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Todos"),

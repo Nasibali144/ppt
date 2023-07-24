@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ppt/controllers/todo_controller.dart';
 import 'package:ppt/core/app_root.dart';
 import 'package:ppt/models/todo/todo.dart';
-import 'package:ppt/screens/detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class ItemCard extends StatelessWidget {
