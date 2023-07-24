@@ -5,6 +5,7 @@ import 'package:ppt/views/item_card.dart';
 import 'package:provider/provider.dart';
 
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -36,6 +37,7 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          Provider.of<TodoController>(context, listen: false).checkDetail();
           AppRoutes.goDetailFromHome(context: context, key: key);
         },
         child: const Icon(Icons.add),

@@ -6,6 +6,7 @@ import 'package:ppt/screens/detail_screen.dart';
 /// State Management:
 /// page based
 /// feature based
+
 class TodoController with ChangeNotifier {
   final TodoRepository repository;
 
@@ -29,35 +30,15 @@ class TodoController with ChangeNotifier {
     notifyListeners();
   }
 
-  void checkDetail(String? id) async {
-    if(id != null) {
-      fetchTodo(id);
-    } else {
-      status = Status.create;
-      notifyListeners();
-    }
-  }
+
 
   Future<void> fetchTodo(String id) async {
-
+    status = Status.read;
     Todo todo = await repository.getTodo(id);
     controllerTitle.text = todo.title;
     controllerDescription.text = todo.description;
 
     notifyListeners();
-  }
-
-  /// TODO: connecting with screen
-  Future<bool> createTodo() async {
-    isLoading = true;
-    notifyListeners();
-
-    Todo todo = await repository.createTodo(Todo(createdAt: DateTime.now().toString(), updatedAt: DateTime.now().toString(), isComplete: false, title: controllerTitle.text, description: controllerDescription.text, id: "00"));
-    todos.add(todo);
-
-    isLoading = false;
-    notifyListeners();
-    return true;
   }
 
   Future<void> deleteTodo(String id, BuildContext context) async {
@@ -85,10 +66,11 @@ class TodoController with ChangeNotifier {
       } else {
         result = await createTodo();
       }
-      if(context.mounted && result) AppRoutes.close(context);
+      if(context.mounted && result) {
+        AppRoutes.close(context);
+      }
     }
   }
-
 
   Future<bool> editTodo(String id) async {
     isLoading = true;
@@ -102,5 +84,42 @@ class TodoController with ChangeNotifier {
     isLoading = false;
     notifyListeners();
     return true;
+  }
+
+  Future<bool> createTodo() async {
+    isLoading = true;
+    notifyListeners();
+
+    Todo todo = await repository.createTodo(Todo(createdAt: DateTime.now().toString(), updatedAt: DateTime.now().toString(), isComplete: false, title: controllerTitle.text, description: controllerDescription.text, id: "00"));
+    todos.add(todo);
+
+    isLoading = false;
+    notifyListeners();
+    return true;
+  }
+
+  Future<bool> changeCompletedTodo(String id) async {
+    isLoading = true;
+    notifyListeners();
+
+    Todo todo = todos.firstWhere((element) => element.id == id);
+    int index = todos.indexOf(todo);
+    todo = await repository.completeTodo(id, !todo.isComplete);
+    todos.replaceRange(index, index + 1, [todo]);
+
+    isLoading = false;
+    notifyListeners();
+    return true;
+  }
+
+  void checkDetail({String? id}) async {
+    controllerDescription.clear();
+    controllerTitle.clear();
+    if(id != null) {
+      fetchTodo(id);
+    } else {
+      status = Status.create;
+      notifyListeners();
+    }
   }
 }
