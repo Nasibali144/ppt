@@ -5,8 +5,6 @@ import 'package:ppt/core/app_root.dart';
 import 'package:ppt/views/item_card.dart';
 import 'package:provider/provider.dart';
 
-
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 

@@ -52,6 +52,12 @@ dependencies:
   # annotation
   freezed_annotation: ^2.4.1
 
+  # sql database
+  sqflite: ^2.2.8+4
+
+  # get path
+  path: ^1.8.3
+
 
 dev_dependencies:
   flutter_test:
