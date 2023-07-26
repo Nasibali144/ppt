@@ -12,9 +12,9 @@ void main() {
         dio: Dio(),
       );
       dio.configuration(Api.baseUrl);
-      repository = TodoRepositoryImpl(
-        client: dio,
-      );
+      // repository = TodoRepositoryImpl(
+      //   client: dio,
+      // );
     });
   });
 }

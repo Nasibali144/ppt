@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ppt/core/service_locator.dart';
 import 'app.dart';
 
-void main() {
+void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  setupLocator();
+  await setupLocator();
 
   runApp(const TodoApp());
 }

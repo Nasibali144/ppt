@@ -4,13 +4,13 @@ import 'package:get_it/get_it.dart';
 import 'package:ppt/controllers/connectivity_controller.dart';
 import 'package:ppt/controllers/todo_controller.dart';
 import 'package:ppt/repositories/todo_repository.dart';
+import 'package:ppt/services/db_service.dart';
 import 'package:ppt/services/network_service.dart';
-
 import 'connectivities.dart';
 
 final GetIt locator = GetIt.instance;
 
-void setupLocator() {
+Future<void> setupLocator() async {
   /// network
   final dio = Dio();
   final networkService = DioService(dio: dio);
@@ -28,8 +28,13 @@ void setupLocator() {
     ),
   );
 
+  /// database
+  final DatabaseHelper database = SqlDatabase();
+  await database.init();
+  locator.registerLazySingleton<DatabaseHelper>(() => database);
+
   /// repository
-  locator.registerLazySingleton<TodoRepository>(() => TodoRepositoryImpl(client: locator()));
+  locator.registerLazySingleton<TodoRepository>(() => TodoRepositoryImpl(client: locator(), connectivity: locator(), database: locator()));
 
   /// controller
   locator.registerFactory<TodoController>(() => TodoController(repository: locator()));

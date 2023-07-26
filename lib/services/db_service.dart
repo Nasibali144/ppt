@@ -81,4 +81,5 @@ class SqlDatabase extends DatabaseHelper {
       whereArgs: [id],
     );
   }
+
 }

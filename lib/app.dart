@@ -3,7 +3,6 @@ import 'package:ppt/controllers/todo_controller.dart';
 import 'package:ppt/core/service_locator.dart';
 import 'package:ppt/screens/home_screen.dart';
 import 'package:provider/provider.dart';
-
 import 'controllers/connectivity_controller.dart';
 
 class TodoApp extends StatelessWidget {
